@@ -2,12 +2,23 @@
 
 $conexao = mysqli_connect("127.0.0.1","root","");
 
+
+
 mysqli_select_db($conexao,  "ongsuper");
 
-if($conexao->connect_errno){
+if($conexao->connect_errno)
+{
     echo "falha ao conectar (" . $mysqli->connect_errno .") " .$mysqli->connect_errno;
-}else
-    echo "conectado com  sucesso ";
+}
+else
+{
+    
+}
+    
 
-    mysqli_close($conexao);
 ?>
+
+
+
+
+
