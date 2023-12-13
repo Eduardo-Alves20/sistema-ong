@@ -5,7 +5,7 @@ include_once('config.php');
  if(isset($_POST['enviar']))
  {
   $nome = $_POST['nome'];
-  $sobrenome = $_POST['sobrenome'];
+  
   $cpf = $_POST['cpf'];
   $email = $_POST['email'];
   $telefone = $_POST['telefone'];
@@ -21,7 +21,7 @@ include_once('config.php');
     
 
 
-    $sqlupdate = "UPDATE paciente SET nome='$nome', sobrenome='$sobrenome', cpf='$cpf', email='$email', telefone='$telefone', sexo='$sexo', nascimento='$nascimento', cep='$cep', cidade='$cidade', estado='$estado' WHERE matricula_paciente='matricula_paciente'";
+    $sqlupdate = "UPDATE paciente SET nome='$nome',cpf='$cpf', email='$email', telefone='$telefone', sexo='$sexo', nascimento='$nascimento', cep='$cep', cidade='$cidade', estado='$estado' WHERE matricula_paciente='matricula_paciente'";
 
     $result = mysqli_query($conexao,$sqlupdate);
 

@@ -149,6 +149,7 @@ if ($resultado->num_rows > 0) {
 
 
      <a href= "formulariopaciente.php" ><input  type="button" value="Cadastrar Paciente"></a>
+     
     <input type="button" value="visualizar paciente">
 
     <a href="sair.php"> <input type="button" value=" sair"> </a>

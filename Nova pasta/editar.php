@@ -18,7 +18,7 @@ if(!empty($_GET['matricula_paciente']))
         {
             
             $nome = $user['nome'];
-            $sobrenome = $user['sobrenome'];
+           
             $cpf = $user['cpf'];
             $email = $user['email'];
             $telefone = $user['telefone'];

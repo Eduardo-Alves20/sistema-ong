@@ -4,6 +4,7 @@ include_once('config.php');
 
 
 $nome = $_POST["nome"];
+$idfilho =$_POST["idfilho"];
 $cpf = $_POST["cpf"];
 $plano = $_POST["plano"];
 $email = $_POST["email"];
@@ -17,9 +18,9 @@ $id = $_SESSION['id'];
 
 
 
-$inserir = " INSERT INTO paciente (nome,  cpf, nascimento, responsavel, sexo, cep, estado, cidade, telefone, email)
-VALUES('$nome','$cpf', '$nascimento', '$id', '$sexo', '$cep', '$estado', '$cidade', '$telefone', '$email' )";
+$inserir = " INSERT INTO paciente (nome,  idfilho,  cpf, nascimento, responsavel, sexo, cep, estado, cidade, telefone, email)
+VALUES('$nome','$idfilho', $cpf', '$nascimento', '$id', '$sexo', '$cep', '$estado', '$cidade', '$telefone', '$email' )";
 $inserindo = mysqli_query($conexao, $inserir);
 
-header('Location: formulariopai.php');
+header('Location: home.php');
 ?>
