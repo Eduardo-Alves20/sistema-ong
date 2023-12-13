@@ -2,6 +2,7 @@
 session_start();
 include_once('config.php');
 
+
 if(isset($_POST['submit-entrar'])):
     $erros = array();
     $email = mysqli_escape_string($conexao, $_POST['email']);
@@ -11,20 +12,22 @@ if(isset($_POST['submit-entrar'])):
         $erros[]= "<li> o campo login/senha precisa ser preenchido </li>";
 
     else
-        $sql = "SELECT * FROM responsavel WHERE email = '$email' and senha = '$senha'";
+        $sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
         $resultado = mysqli_query($conexao, $sql);
 
         if(mysqli_num_rows($resultado) > 0):
-            $sql = "SELECT * FROM responsavel WHERE email = '$email' and senha = '$senha'";
+            $sql = "SELECT * FROM usuario WHERE email = '$email' and senha = '$senha'";
             $resultado = mysqli_query($conexao, $sql);
 
             if(mysqli_num_rows($resultado) == 1 )
             $dados = mysqli_fetch_array($resultado);
-            $_SESSION['logado'] = true; 
             $_SESSION['email'] = $dados['email'];
             $_SESSION['senha'] = $dados['senha'];
-            $_SESSION['matricula_responsavel'] =$id['id'];
-            header ('location: home.php');
+            $_SESSION['id'] = $dados['id'];
+
+
+        
+            header('location:funcao.php');
 
         else:
             $erros[] = "<li>usuario ou senha nao conferem</li>";
@@ -132,8 +135,9 @@ endif;
             
             <input class="inputSubmit" type="submit" name="submit-entrar" value="Entrar">
             <div class="box">   
-                <a href="cadastrarvoluntario.php">Cadastre-se</a>
+                <a href="precadastro.php">Cadastre-se</a>
             </div>
+            
         </form>
     </div>
 

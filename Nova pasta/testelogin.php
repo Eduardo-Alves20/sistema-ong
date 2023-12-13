@@ -10,7 +10,7 @@ if((!isset($_SESSION['email']) == true) and (!isset($_SESSION['senha']) == true)
 }
 $sql = " SELECT * FROM responsavel ORDER BY nome DESC";
 $result = $conexao->query($sql);
-
+ 
 // testando a validação de senha 
 if(isset($_POST['submit-entrar'])):
     $erros = array();
@@ -24,24 +24,20 @@ if(isset($_POST['submit-entrar'])):
         $sql = "SELECT * FROM responsavel WHERE email = '$email' and senha = '$senha'";
         $resultado = mysqli_query($conexao, $sql);
 
-        if(mysqli_num_rows($resultado) > 0):
-            $sql = "SELECT * FROM responsavel WHERE email = '$email' and senha = '$senha'";
+        if(mysqli_num_rows($resultado) == 1):
+            $sql = "SELECT * FROM responsavel" ;
             $resultado = mysqli_query($conexao, $sql);
-
-            if(mysqli_num_rows($resultado) == 1 )
-                $dados = mysqli_fetch_array($resultado);
-                $_SESSION['logado'] = true; 
-                $_SESSION['email'] = $dados['email'];
-                $_SESSION['senha'] = $dados['senha'];
+            $dados = mysqli_fetch_array($resultado);
+            $_SESSION['logado'] = true; 
+            $_SESSION['email'] = $dados['email'];
+            $_SESSION['senha'] = $dados['senha'];
+            
+            header('location:funcao.php');
                 
-
-            else:
-                $erros [] = "<li> usuario ou senha nao conferem </li>";
-        endif;
-
         else:
-            $erros [] = "<li> usuario inexistente </li>";
-
+            $erros [] = "<li> usuario inexistente ou usuario ou senha nao conferem </li>";
+            header('location:login.php');
+        endif;
     endif;        
 
 
@@ -52,7 +48,7 @@ if(isset($_POST['submit-entrar'])):
     
 }
 
-echo $matricula_responsavel;
+
 ?>
 
 

@@ -3,10 +3,8 @@
 include_once('config.php');
 if(isset($_POST['submit-cadastrar']));
 $nome = $_POST["nome"];
-$sobrenome = $_POST["sobrenome"];
 $cpf = $_POST["cpf"];
-$profissao = $_POST["profissao"];
-$salario = $_POST["salario"];
+$endereco = $_POST["endereco"];
 $email = $_POST["email"];
 $senha = $_POST["senha"];
 $telefone = $_POST["telefone"];
@@ -15,20 +13,22 @@ $nascimento = $_POST["data_nascimento"];
 $cep = $_POST["cep"];
 $cidade = $_POST["cidade"];
 $estado = $_POST["estado"];
-$matricularesponsavel = $_POST["matricula_responsavel"];
+$funcao = $_POST["funcao"];
 
 
 
 
 
-$inserir = " INSERT INTO responsavel (nome, sobrenome, cpf, nascimento, telefone, email, senha, profissao, salario, sexo, cep, estado, cidade, matricula_responsavel)
-VALUES('$nome' , '$sobrenome' , '$cpf' , '$nascimento' , '$telefone' , '$email' , '$senha', '$profissao' , '$salario' , '$sexo' , '$cep' , '$estado' , '$cidade' ,  '$matricularesponsavel'  )";
+$inserirdados = " INSERT INTO voluntario (nome,  cpf, nascimento, telefone, sexo, cep, endereco, estado, cidade, funcao )
+VALUES('$nome' , '$cpf' , '$nascimento' , '$telefone' , '$sexo' , '$cep' , '$endereco', '$estado' , '$cidade' ,'$funcao')";
+$inserindo = mysqli_query($conexao, $inserirdados);
+
+$inserirlogin = "INSERT INTO usuario (email, senha, id) values ('$email' , '$senha', '$cpf')";
 
 
-$inserindo = mysqli_query($conexao, $inserir);
+$inserindo = mysqli_query($conexao, $inserirlogin);
 
 header('location: home.php');
-
 
 
 

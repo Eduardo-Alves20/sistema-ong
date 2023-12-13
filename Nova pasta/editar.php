@@ -1,15 +1,14 @@
 
 <?php
-
-
  include_once('config.php');
- include_once('teste.php');
 
 
-if(!empty($_GET['matricula_responsavel']))
+if(!empty($_GET['matricula_paciente']))
+
+
 {
-    $matricularesponsavel = $_GET['matricula_responsavel'];
-    $sqlselect = "SELECT * FROM responsavel where matricula_responsavel='$matricularesponsavel'";
+    $matricula_paciente = $_GET['matricula_paciente'];
+    $sqlselect = "SELECT * FROM paciente where matricula_paciente='$matricula_paciente'";
     $result = $conexao->query($sqlselect);
    
     if(mysqli_num_rows($result) > 0)
@@ -21,17 +20,14 @@ if(!empty($_GET['matricula_responsavel']))
             $nome = $user['nome'];
             $sobrenome = $user['sobrenome'];
             $cpf = $user['cpf'];
-            $profissao = $user['profissao'];
-            $salario = $user['salario'];
             $email = $user['email'];
-            $senha = $user['senha'];
             $telefone = $user['telefone'];
             $sexo = $user['sexo'];
             $nascimento = $user['nascimento'];
             $cep = $user['cep'];
             $cidade = $user['cidade'];
             $estado = $user['estado'];
-            $matricularesponsavel = $user['matricula_responsavel'];
+        
             }
         
     }
@@ -86,7 +82,7 @@ if(!empty($_GET['matricula_responsavel']))
                 <br>
 
                 <div class="inputBox">
-                    <input type="text" name="data_nascimento" id="data_nascimento" class="inputUser" value = "<?php  echo $nascimento ?>" required >
+                    <input type="text" name="nascimento" id="data_nascimento" class="inputUser" value = "<?php  echo $nascimento ?>" required >
                     <label for="data_nascimento" class="labelInput">Data de Nascimento</label>
                 </div>
 
@@ -106,27 +102,8 @@ if(!empty($_GET['matricula_responsavel']))
 
                 <br>
 
-                <div class="inputBox">
-                    <input type="text" name="senha" id="senha" class="inputUser" value = "<?php  echo $senha ?>" required >
-                    <label for="senha" class="labelInput">senha</label>
-                </div>
-
-                <br>
-
-                <div class="inputBox">
-                    <input type="text" name="profissao" id="profissao" class="inputUser" value = "<?php  echo $profissao ?>" required>
-                    <label for="profissao" class="labelInput">profissâo</label>
-                </div> 
+    
                 
-                <br>
-
-                <div class="inputBox">
-                    <input type="text" name="salario" id="salario" class="inputUser" value = "<?php  echo $salario ?>" required>
-                    <label for="salario" class="labelInput">salario</label>
-                </div> 
-
-                <br>
-
                 <div class="inputBox">
                     <input type="text" name="sexo" id="sexo" class="inputUser" value = "<?php  echo $sexo ?>" required >
                     <label for="sexo" class="labelInput">Sexo</label>
@@ -156,7 +133,7 @@ if(!empty($_GET['matricula_responsavel']))
                 <br>
 
                 <div class="inputBox">
-                    <input type="hidden" name="matricula_responsavel" id="matricula_responsavel" value = "<?php  echo $matricularesponsavel ?>" required>
+                    <input type="text" name="matricula_paciente" id="matricula_paciente" value = "<?php  echo $matricula_paciente ?>" required>
                     
                 </div> 
                 
